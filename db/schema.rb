@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626055034) do
+ActiveRecord::Schema.define(version: 20150626062706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -251,6 +251,27 @@ ActiveRecord::Schema.define(version: 20150626055034) do
   add_index "groups_users", ["group_id", "user_id"], name: "index_groups_users_on_group_id_and_user_id", using: :btree
   add_index "groups_users", ["group_id"], name: "index_groups_users_on_group_id", using: :btree
   add_index "groups_users", ["user_id"], name: "index_groups_users_on_user_id", using: :btree
+
+  create_table "hack_apps", force: :cascade do |t|
+    t.string   "first_name",                 limit: 36
+    t.string   "last_name",                  limit: 36
+    t.string   "email",                      limit: 64, default: "",    null: false
+    t.string   "gender"
+    t.integer  "age"
+    t.string   "school"
+    t.boolean  "needs_travel_reimbursement",            default: false, null: false
+    t.boolean  "is_first_time_hacker",                  default: false, null: false
+    t.text     "why"
+    t.string   "github"
+    t.string   "linkedin"
+    t.string   "website"
+    t.string   "resume"
+    t.boolean  "code_of_conduct"
+    t.string   "status"
+    t.datetime "decision_date"
+    t.boolean  "is_favorite"
+    t.text     "nite"
+  end
 
   create_table "leads", force: :cascade do |t|
     t.integer  "user_id"
