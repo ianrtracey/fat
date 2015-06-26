@@ -10,16 +10,17 @@
 
   %div#edit_account{ hidden }
 
-  = render "comments/new", :commentable => @account
-  = render :partial => "shared/timeline", :collection => @timeline
 
   = hook(:show_account_bottom, self, {entity: @account}) do
 
-    = render :partial => "tasks/tasks", :locals => {:object => @account}
 
     = render "contacts/contacts", :object => @account
 
     = render "opportunities/opportunities", :object => @account
+
+    
+    = render "comments/new", :commentable => @account
+    = render :partial => "shared/timeline", :collection => @timeline
 
     = render "versions/versions", :object => @account
 

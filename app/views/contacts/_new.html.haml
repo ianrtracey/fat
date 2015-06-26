@@ -7,11 +7,8 @@
 
   = render "contacts/top_section", :f => f
   = render "fields/edit_custom_field_group", :f => f
-  = render "shared/add_comment",   :f => f
   = render "contacts/extra",       :f => f
-  = render "contacts/web",         :f => f
   = render "fields/groups",        :f => f
-  = render "entities/permissions", :f => f, :entity => @contact
   = hook(:entity_form, self, {f: f, entity: @contact})
 
   .buttonbar
