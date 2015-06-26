@@ -1,5 +1,5 @@
 - @versions = Version.recent_for_user(current_user)
-.panel#recently
+.ui.card#recently
   .caption #{t :recent_items}
   - if @versions.present?
     = render :partial => "shared/recent", :collection => @versions
