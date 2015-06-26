@@ -7,8 +7,8 @@
           = f.text_field :name, :autofocus => true, :style => "width:500px"
       %tr
         %td
-          .label #{t :assigned_to}:
-          = user_select(:account, User.without(current_user), current_user)
+          .label #{t :amount} #{t :currency}:
+          = f.text_field :amount, :style => "width:110px; text-align:right;"
         %td= spacer
         %td
           .label #{t :category}:

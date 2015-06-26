@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150227123054) do
+ActiveRecord::Schema.define(version: 20150626055034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 20150227123054) do
   create_table "accounts", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "assigned_to"
-    t.string   "name",             limit: 64,  default: "",       null: false
-    t.string   "access",           limit: 8,   default: "Public"
+    t.string   "name",             limit: 64,                           default: "",       null: false
+    t.string   "access",           limit: 8,                            default: "Public"
     t.string   "website",          limit: 64
     t.string   "toll_free_phone",  limit: 32
     t.string   "phone",            limit: 32
@@ -48,9 +48,10 @@ ActiveRecord::Schema.define(version: 20150227123054) do
     t.datetime "updated_at"
     t.string   "email",            limit: 254
     t.string   "background_info"
-    t.integer  "rating",                       default: 0,        null: false
+    t.integer  "rating",                                                default: 0,        null: false
     t.string   "category",         limit: 32
     t.text     "subscribed_users"
+    t.decimal  "amount",                       precision: 12, scale: 2
   end
 
   add_index "accounts", ["assigned_to"], name: "index_accounts_on_assigned_to", using: :btree
@@ -451,6 +452,7 @@ ActiveRecord::Schema.define(version: 20150227123054) do
 
   add_index "versions", ["created_at"], name: "index_versions_on_created_at", using: :btree
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+  add_index "versions", ["related_id", "related_type"], name: "index_versions_on_related_id_and_related_type", using: :btree
   add_index "versions", ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
   add_index "versions", ["whodunnit"], name: "index_versions_on_whodunnit", using: :btree
 
