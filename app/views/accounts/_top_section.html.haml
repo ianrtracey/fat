@@ -1,9 +1,9 @@
 = hook(:account_top_section, self, :f => f) do
-  .section
+  .ui.segment
     %table
       %tr
         %td(colspan="5")
           .label.top.req #{t :name}:
-          = f.text_field :name, :autofocus => true, :style => "width:500px"
+          = f.text_field :name, :autofocus => true, :class => :style => "width:500px"
       %tr
       = hook(:account_top_section_bottom, self, :f => f)
